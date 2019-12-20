@@ -104,7 +104,7 @@ for (let i = 0; i < graduates.length; i++) {
   unisWithUni.push(graduates[i].university);
 }
 
-console.log(unisWithUni);
+console.log("universities that contain Uni: ", unisWithUni);
 
 
 // ==== ADVANCED Array Methods ====
@@ -136,7 +136,7 @@ zooAnimals.forEach((currentValue) => {
   displayNames.push(`${currentValue.animal_name}, ${currentValue.scientific_name}`)
 });
 
-console.log(displayNames);
+console.log("Zoo animals' names: ", displayNames);
 
 /* Request 2: .map()
 
@@ -150,7 +150,7 @@ const lowCaseAnimalNames = zooAnimals.map(function (lowerCase) {
 });
 
 
-console.log(lowCaseAnimalNames);
+console.log("Zoo animals' names in lower case: ", lowCaseAnimalNames);
 
 /* Request 3: .filter() 
 
@@ -158,10 +158,12 @@ The zoos are concerned about animals with a lower population count. Using filter
 the animals with a population less than 5.
 
 */
-const lowPopulationAnimals = [];
+const lowPopulationAnimals = zooAnimals.filter(function(lowPop) {
+  return lowPop.population < 5;
+});
 
 
-console.log(lowPopulationAnimals);
+console.log("Zoo animals with a population less than 5: ", lowPopulationAnimals);
 
 /* Request 4: .reduce() 
 
@@ -169,8 +171,11 @@ The zoos need to know their total animal population across the United States. Fi
 the reduce method takes two arguments: a callback (which itself takes two args), and an initial value for the count.
 
 */
-const populationTotal = 0;
-console.log(populationTotal);
+const populationTotal = zooAnimals.reduce(function (totalPopulation, individualPopulation) {
+  return totalPopulation += individualPopulation.population;
+}, 0);
+
+console.log("total animal population:", populationTotal);
 
 
 /*
